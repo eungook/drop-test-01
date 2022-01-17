@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style type="text/css">
+      body {
+        height: 100vh;
+        margin: 0;
+        display: grid;
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      const body = document.getElementsByTagName('body')[0];
+
+      body.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        console.log({
+          where: 'click',
+          e,
+        });
+      });
+
+      body.addEventListener('dragover', (e) => {
+        e.preventDefault(); // 여기도 필요함
+      });
+
+      body.addEventListener('drop', (e) => {
+        e.preventDefault(); // 필요함
+
+        const { files } = e.dataTransfer;
+
+        console.log({
+          where: 'drop',
+          e,
+          files, // 잘 들어옴!
+        });
+      });
+    </script>
+  </body>
+</html>
